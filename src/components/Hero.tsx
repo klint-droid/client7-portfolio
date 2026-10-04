@@ -25,7 +25,7 @@ const heroSlides = [
     role: 'Executive Virtual Assistant & Operations Leader',
     badge: '10+ Years Enterprise Support',
     tags: ['Executive Care', 'Full-Time & Part-Time', 'Taguig, Metro Manila'],
-    objectPosition: 'center 15%',
+    objectPosition: 'center 8%',
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const heroSlides = [
     role: 'Technical Support & L2 Enterprise Systems Specialist',
     badge: 'CreditLens & LoanIQ Expert',
     tags: ['50+ Staff Desk Lead', 'ITIL Quality Ops', 'Global Shifts'],
-    objectPosition: 'center 22%',
+    objectPosition: 'center 12%',
   },
 ];
 
@@ -217,7 +217,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             {/* Background Decorative Angled Frame */}
             <div className="hero-angled-frame" />
 
-            {/* Slideshow Card */}
+            {/* Slideshow Card - Clean, Unobstructed Crystal-Clear View */}
             <div
               className="hero-slideshow-card"
               onMouseEnter={() => setIsPaused(true)}
@@ -242,14 +242,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                         style={{ objectPosition: slide.objectPosition }}
                         loading={idx === 0 ? 'eager' : 'lazy'}
                       />
-                      {/* Gradient overlay for contrast */}
-                      <div className="hero-slide-overlay" />
                     </div>
                   );
                 })}
               </div>
 
-              {/* Top Bar Floating Badges */}
+              {/* Minimal Top Bar Status & Counter */}
               <div className="hero-slideshow-topbar">
                 <div className="hero-slide-status-pill">
                   <span
@@ -290,42 +288,47 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               >
                 <IconChevronRight size={18} />
               </button>
+            </div>
 
-              {/* Bottom Caption Glassmorphism Card */}
-              <div className="hero-slide-caption-card">
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.35rem' }}>
-                  <span className="hero-slide-badge-tag">
-                    {heroSlides[currentSlide].badge}
-                  </span>
+            {/* Floating Tag Card Situated Below the Photo Frame */}
+            <div
+              className="hero-floating-bottom-tag"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem', gap: '0.5rem' }}>
+                <span className="hero-slide-badge-tag">
+                  {heroSlides[currentSlide].badge}
+                </span>
 
-                  {/* Dot / Pill Indicators */}
-                  <div className="hero-slide-indicators">
-                    {heroSlides.map((_, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => setCurrentSlide(idx)}
-                        className={`hero-indicator-dot ${currentSlide === idx ? 'active' : ''}`}
-                        aria-label={`Go to photo slide ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <h3 className="hero-slide-title">
-                  {heroSlides[currentSlide].title}
-                </h3>
-                <div className="hero-slide-role">
-                  {heroSlides[currentSlide].role}
-                </div>
-
-                <div className="hero-slide-tags">
-                  {heroSlides[currentSlide].tags.map((tag) => (
-                    <span key={tag} className="hero-slide-tag-chip">
-                      {tag}
-                    </span>
+                {/* Dot / Pill Indicators */}
+                <div className="hero-slide-indicators">
+                  {heroSlides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`hero-indicator-dot ${currentSlide === idx ? 'active' : ''}`}
+                      aria-label={`Go to photo slide ${idx + 1}`}
+                      title={`Photo ${idx + 1}`}
+                    />
                   ))}
                 </div>
+              </div>
+
+              <h3 className="hero-slide-title">
+                {heroSlides[currentSlide].title}
+              </h3>
+              <div className="hero-slide-role">
+                {heroSlides[currentSlide].role}
+              </div>
+
+              <div className="hero-slide-tags">
+                {heroSlides[currentSlide].tags.map((tag) => (
+                  <span key={tag} className="hero-slide-tag-chip">
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -443,7 +446,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
         .hero-card-col {
           position: relative;
           display: flex;
-          justify-content: center;
+          flex-direction: column;
           align-items: center;
           width: 100%;
           max-width: 440px;
@@ -452,7 +455,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
 
         .hero-angled-frame {
           position: absolute;
-          inset: -10px;
+          top: -8px;
+          left: -8px;
+          right: -8px;
+          height: 440px;
           border-radius: 2rem;
           border: 1.5px solid var(--border-subtle);
           background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(246, 239, 233, 0.6) 100%);
@@ -464,15 +470,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           position: relative;
           z-index: 1;
           width: 100%;
-          height: 520px;
+          height: 440px;
           border-radius: 1.75rem;
-          box-shadow: 0 24px 60px -12px rgba(42, 23, 37, 0.35), 0 0 0 1px rgba(212, 143, 120, 0.35);
-          border: 3px solid #ffffff;
+          box-shadow: 0 20px 48px -10px rgba(42, 23, 37, 0.28), 0 0 0 1px rgba(212, 143, 120, 0.3);
+          border: 3.5px solid #ffffff;
           overflow: hidden;
           background-color: var(--green-950);
-          display: flex;
-          flex-direction: column;
-          justifyContent: space-between;
         }
 
         .hero-slides-wrapper {
@@ -505,30 +508,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           display: block;
         }
 
-        .hero-slide-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            180deg,
-            rgba(27, 17, 24, 0.5) 0%,
-            rgba(27, 17, 24, 0.05) 28%,
-            rgba(27, 17, 24, 0.35) 60%,
-            rgba(27, 17, 24, 0.95) 100%
-          );
-          pointer-events: none;
-        }
-
         .hero-slideshow-topbar {
-          position: relative;
+          position: absolute;
+          top: 14px;
+          left: 14px;
+          right: 14px;
           z-index: 10;
-          padding: 1.25rem 1.25rem 0 1.25rem;
           display: flex;
           align-items: center;
           justifyContent: space-between;
+          pointer-events: none;
         }
 
         .hero-slide-status-pill {
-          background-color: rgba(41, 24, 36, 0.8);
+          background-color: rgba(41, 24, 36, 0.82);
           border: 1px solid rgba(74, 222, 128, 0.45);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
@@ -542,10 +535,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           gap: 0.45rem;
           letter-spacing: 0.05em;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+          pointer-events: auto;
         }
 
         .hero-slide-counter-badge {
-          background-color: rgba(41, 24, 36, 0.8);
+          background-color: rgba(41, 24, 36, 0.82);
           border: 1px solid rgba(212, 143, 120, 0.45);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
@@ -556,17 +550,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           color: var(--gold-400);
           letter-spacing: 0.06em;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+          pointer-events: auto;
         }
 
         .hero-slide-arrow-btn {
           position: absolute;
-          top: 48%;
+          top: 50%;
           transform: translateY(-50%);
           z-index: 10;
           width: 38px;
           height: 38px;
           border-radius: 50%;
-          background-color: rgba(41, 24, 36, 0.72);
+          background-color: rgba(41, 24, 36, 0.75);
           border: 1px solid rgba(212, 143, 120, 0.4);
           color: #ffffff;
           display: flex;
@@ -577,7 +572,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           -webkit-backdrop-filter: blur(10px);
           transition: all 0.25s ease;
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-          opacity: 0.85;
+          opacity: 0.88;
         }
 
         .hero-slide-arrow-btn:hover {
@@ -596,18 +591,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           right: 12px;
         }
 
-        .hero-slide-caption-card {
+        .hero-floating-bottom-tag {
           position: relative;
           z-index: 10;
-          margin: 1rem;
-          background: rgba(41, 24, 36, 0.88);
-          border: 1px solid rgba(212, 143, 120, 0.35);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          width: calc(100% - 16px);
+          margin-top: -30px;
+          background: rgba(38, 22, 34, 0.94);
+          border: 1.5px solid rgba(212, 143, 120, 0.4);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           border-radius: 1.25rem;
           padding: 1.15rem 1.25rem;
-          box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 16px 36px -6px rgba(42, 23, 37, 0.35);
           color: #ffffff;
+          transition: all 0.3s ease;
+        }
+
+        .hero-floating-bottom-tag:hover {
+          border-color: var(--gold-400);
+          box-shadow: 0 20px 42px -6px rgba(42, 23, 37, 0.42);
         }
 
         .hero-slide-badge-tag {
@@ -746,8 +748,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             display: none;
           }
           .hero-slideshow-card {
-            height: 470px;
+            height: 380px;
             border-radius: 1.25rem;
+          }
+          .hero-floating-bottom-tag {
+            margin-top: -20px;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 1rem;
           }
           .badge-top-right,
           .badge-bottom-left {
