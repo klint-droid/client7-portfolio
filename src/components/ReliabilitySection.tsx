@@ -124,7 +124,7 @@ export const ReliabilitySection: React.FC = () => {
                 Seamless Timezone Overlap Across 4 Continents
               </h3>
               <p style={{ color: 'var(--text-on-dark-muted)', fontSize: '0.92rem', maxWidth: '680px' }}>
-                With a base in the Philippines (PHT / UTC+8), I easily support full-time schedules or structured overlap
+                With a base in Taguig City, Metro Manila (PHT / UTC+8), I easily support full-time or part-time schedules with structured overlap
                 hours across US Eastern (EST), US Pacific (PST), United Kingdom (GMT), and Australian Eastern (AEST).
               </p>
             </div>

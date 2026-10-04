@@ -62,21 +62,27 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
               <div
                 style={{
-                  width: '42px',
-                  height: '42px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '12px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.12)',
-                  color: 'var(--gold-400)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: 'var(--font-serif)',
-                  fontWeight: 700,
-                  fontSize: '1.25rem',
-                  border: '1px solid var(--gold-border)',
+                  border: '2px solid var(--gold-400)',
+                  overflow: 'hidden',
+                  flexShrink: 0,
+                  boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 }}
               >
-                WD
+                <img
+                  src="/photos/Wenelove.png"
+                  alt={personal.name}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center 15%',
+                    display: 'block',
+                  }}
+                />
               </div>
               <div>
                 <span style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: '1.15rem', color: '#ffffff', display: 'block' }}>

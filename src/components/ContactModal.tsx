@@ -31,7 +31,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    roleScope: 'Executive Virtual Assistance',
+    roleScope: 'Part-Time Virtual Assistance',
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -112,16 +112,56 @@ Sent from your portfolio website`;
         </button>
 
         {/* Modal Header */}
-        <div style={{ marginBottom: '1.75rem' }}>
-          <span className="sub-caption" style={{ marginBottom: '0.4rem' }}>
-            Direct Contact & Hiring
-          </span>
-          <h2 style={{ fontSize: '1.75rem', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
-            Connect with {personal.name}
-          </h2>
-          <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-            Available for remote full-time, part-time, or specialized L2 systems consulting contracts worldwide.
-          </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.75rem' }}>
+          <div
+            style={{
+              position: 'relative',
+              width: '54px',
+              height: '54px',
+              borderRadius: '16px',
+              border: '2px solid var(--gold-400)',
+              overflow: 'hidden',
+              flexShrink: 0,
+              boxShadow: '0 4px 14px rgba(42, 23, 37, 0.15)',
+              backgroundColor: 'var(--green-900)',
+            }}
+          >
+            <img
+              src="/photos/Wenelove.png"
+              alt={personal.name}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center 15%',
+                display: 'block',
+              }}
+            />
+            <span
+              style={{
+                position: 'absolute',
+                bottom: '2px',
+                right: '2px',
+                width: '10px',
+                height: '10px',
+                borderRadius: '50%',
+                backgroundColor: '#22c55e',
+                border: '2px solid #ffffff',
+              }}
+              title="Available"
+            />
+          </div>
+          <div>
+            <span className="sub-caption" style={{ marginBottom: '0.25rem' }}>
+              Direct Contact & Hiring
+            </span>
+            <h2 style={{ fontSize: '1.5rem', color: 'var(--text-heading)', marginBottom: '0.2rem', lineHeight: 1.2 }}>
+              Connect with {personal.name}
+            </h2>
+            <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', margin: 0 }}>
+              Available for remote roles and enterprise support worldwide.
+            </p>
+          </div>
         </div>
 
         {/* Quick Contact Buttons Row */}
@@ -322,11 +362,12 @@ Sent from your portfolio website`;
                   outline: 'none',
                 }}
               >
-                <option value="Executive Virtual Assistance">Executive Virtual Assistance & Administration</option>
+                <option value="Part-Time Virtual Assistance">Part-Time Virtual Assistance & Administration</option>
+                <option value="Full-Time Executive Support">Full-Time Executive Support & Administration</option>
                 <option value="L2 Banking Systems Support">L2 Banking Systems Support (CreditLens, LoanIQ)</option>
-                <option value="Customer Support Specialist">Omnichannel Customer Support & Help Desk</option>
+                <option value="Customer Support Specialist">Customer Support & Technical Help Desk</option>
                 <option value="IT Service Desk Leadership">IT Service Desk Leadership & QA Operations</option>
-                <option value="Custom Project Scope">Custom Scope / General Consultation</option>
+                <option value="Custom Project Scope">Custom Scope / Flexible Consultation</option>
               </select>
             </div>
 

@@ -1,49 +1,49 @@
 :root {
-  /* Warm Luxury Neutrals */
-  --bg-canvas: #faf7f2;
+  /* Warm Pearlescent & Cashmere Neutrals */
+  --bg-canvas: #fcf9f7;
   --bg-surface: #ffffff;
   --bg-surface-elevated: #ffffff;
-  --bg-warm-tint: #f4efe7;
-  --bg-warm-hover: #ede6dc;
-  --border-subtle: #e7dfd3;
-  --border-medium: #d6ccbe;
+  --bg-warm-tint: #f6efe9;
+  --bg-warm-hover: #ede3dc;
+  --border-subtle: #eaddd3;
+  --border-medium: #d6c5b8;
 
-  /* Deep Forest Greens */
-  --green-950: #0c2317;
-  --green-900: #133826;
-  --green-850: #1a4933;
-  --green-800: #225a3f;
-  --green-700: #2d6f4f;
-  --green-600: #3b8a64;
-  --green-200: #d4e7dc;
-  --green-100: #e8f3ec;
-  --green-50: #f3f8f5;
-  --green-border: #c4dccf;
+  /* Deep Velvet Rosewood & Royal Plum (Executive Authority with Feminine Elegance) */
+  --green-950: #1b1118;
+  --green-900: #2a1725;
+  --green-850: #382030;
+  --green-800: #4a2b40;
+  --green-700: #683d5a;
+  --green-600: #885376;
+  --green-200: #ecd2df;
+  --green-100: #f6e6ee;
+  --green-50: #fdf5f9;
+  --green-border: #e3bfd3;
 
-  /* Brushed Brass & Warm Gold */
-  --gold-600: #a37930;
-  --gold-500: #c59b53;
-  --gold-400: #d8b16d;
-  --gold-100: #fbf5ea;
-  --gold-border: #ebd9bb;
+  /* Luminous Rose Gold & Warm Champagne */
+  --gold-600: #9e5b47;
+  --gold-500: #be755e;
+  --gold-400: #d48f78;
+  --gold-100: #fdf0ea;
+  --gold-border: #eccfc4;
 
   /* Typography Colors */
-  --text-heading: #122119;
-  --text-primary: #273830;
-  --text-secondary: #586960;
-  --text-tertiary: #84948b;
-  --text-on-dark: #f8faf8;
-  --text-on-dark-muted: #c3d4ca;
+  --text-heading: #1f131c;
+  --text-primary: #34252f;
+  --text-secondary: #6b5763;
+  --text-tertiary: #96838e;
+  --text-on-dark: #fcf9fb;
+  --text-on-dark-muted: #e0d0d8;
 
   /* Font Families */
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Elevations & Shadows */
-  --shadow-sm: 0 2px 6px rgba(19, 56, 38, 0.04), 0 1px 2px rgba(19, 56, 38, 0.02);
-  --shadow-md: 0 8px 24px -4px rgba(19, 56, 38, 0.06), 0 2px 8px -2px rgba(19, 56, 38, 0.03);
-  --shadow-lg: 0 20px 40px -10px rgba(19, 56, 38, 0.09), 0 4px 12px -2px rgba(19, 56, 38, 0.04);
-  --shadow-xl: 0 28px 60px -12px rgba(19, 56, 38, 0.16);
+  /* Elevations & Soft Rosewood Shadows */
+  --shadow-sm: 0 2px 6px rgba(42, 23, 37, 0.04), 0 1px 2px rgba(42, 23, 37, 0.02);
+  --shadow-md: 0 8px 24px -4px rgba(42, 23, 37, 0.07), 0 2px 8px -2px rgba(42, 23, 37, 0.03);
+  --shadow-lg: 0 20px 40px -10px rgba(42, 23, 37, 0.1), 0 4px 12px -2px rgba(42, 23, 37, 0.05);
+  --shadow-xl: 0 28px 60px -12px rgba(42, 23, 37, 0.2);
 
   /* Transitions */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -70,7 +70,7 @@ html {
 body {
   overflow-x: hidden;
   background-color: var(--bg-canvas);
-  background-image: radial-gradient(rgba(19, 56, 38, 0.03) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(104, 61, 90, 0.04) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
@@ -228,13 +228,13 @@ button {
 .btn-primary {
   background-color: var(--green-900);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(19, 56, 38, 0.25);
+  box-shadow: 0 4px 14px rgba(42, 23, 37, 0.22);
 }
 
 .btn-primary:hover {
   background-color: var(--green-800);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(19, 56, 38, 0.32);
+  box-shadow: 0 6px 20px rgba(42, 23, 37, 0.3);
 }
 
 .btn-secondary {

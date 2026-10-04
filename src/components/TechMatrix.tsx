@@ -295,7 +295,7 @@ export const TechMatrix: React.FC = () => {
         .tool-logo-card:hover {
           transform: translateY(-4px) scale(1.03);
           border-color: var(--green-800);
-          box-shadow: 0 8px 20px rgba(19, 56, 38, 0.12);
+          box-shadow: 0 8px 20px rgba(42, 23, 37, 0.12);
           opacity: 1 !important;
           filter: none !important;
         }

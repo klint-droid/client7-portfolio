@@ -62,10 +62,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         right: 0,
         zIndex: 90,
         transition: 'all 0.25s ease',
-        backgroundColor: scrolled ? 'rgba(250, 247, 242, 0.96)' : 'rgba(250, 247, 242, 0.88)',
+        backgroundColor: scrolled ? 'rgba(252, 249, 247, 0.96)' : 'rgba(252, 249, 247, 0.88)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
-        borderBottom: scrolled ? '1px solid rgba(19, 56, 38, 0.12)' : '1px solid rgba(19, 56, 38, 0.06)',
+        borderBottom: scrolled ? '1px solid rgba(42, 23, 37, 0.1)' : '1px solid rgba(42, 23, 37, 0.05)',
         padding: scrolled ? '0.45rem 0' : '0.65rem 0',
       }}
     >
@@ -98,23 +98,42 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         >
           <div
             style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '10px',
-              backgroundColor: 'var(--green-900)',
-              color: 'var(--gold-100)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontFamily: 'var(--font-serif)',
-              fontWeight: 700,
-              fontSize: '1.1rem',
-              boxShadow: '0 2px 8px rgba(19, 56, 38, 0.18)',
-              border: '1px solid var(--gold-border)',
+              position: 'relative',
+              width: '40px',
+              height: '40px',
+              borderRadius: '12px',
+              border: '2px solid var(--gold-400)',
+              boxShadow: '0 2px 10px rgba(19, 56, 38, 0.2)',
               flexShrink: 0,
+              backgroundColor: 'var(--green-900)',
             }}
           >
-            WD
+            <img
+              src="/photos/Wenelove.png"
+              alt={portfolioData.personal.name}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center 15%',
+                borderRadius: '10px',
+                display: 'block',
+              }}
+            />
+            <span
+              style={{
+                position: 'absolute',
+                bottom: '-2px',
+                right: '-2px',
+                width: '10px',
+                height: '10px',
+                borderRadius: '50%',
+                backgroundColor: '#22c55e',
+                border: '2px solid #ffffff',
+                boxShadow: '0 0 4px rgba(34, 197, 94, 0.6)',
+              }}
+              title="Online / Available"
+            />
           </div>
           <div>
             <span
@@ -363,10 +382,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255, 255, 255, 0.75);
-            border: 1px solid rgba(19, 56, 38, 0.08);
+            border: 1px solid rgba(42, 23, 37, 0.08);
             border-radius: 9999px;
             padding: 0.25rem 0.4rem;
-            box-shadow: 0 2px 10px rgba(19, 56, 38, 0.04);
+            box-shadow: 0 2px 10px rgba(42, 23, 37, 0.04);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             gap: 0.15rem;
@@ -387,7 +406,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           }
           .minimal-nav-pill-btn:hover {
             color: var(--green-950);
-            background-color: rgba(19, 56, 38, 0.06);
+            background-color: rgba(42, 23, 37, 0.06);
           }
           .mobile-hamburger {
             display: none !important;

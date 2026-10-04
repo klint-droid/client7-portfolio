@@ -205,9 +205,9 @@ export const LogoRDP: FC<LogoProps> = ({ size = 44, className = '', style }) => 
 // 18. ITIL & Service Desk Ops Logo
 export const LogoITIL: FC<LogoProps> = ({ size = 44, className = '', style }) => (
   <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className} style={style}>
-    <rect width="48" height="48" rx="12" fill="#133826" />
-    <circle cx="24" cy="24" r="11" stroke="#D8B16D" strokeWidth="2" fill="none" />
-    <path d="M24 16V24L29 27" stroke="#D8B16D" strokeWidth="2.5" strokeLinecap="round" />
+    <rect width="48" height="48" rx="12" fill="#2a1725" />
+    <circle cx="24" cy="24" r="11" stroke="#D48F78" strokeWidth="2" fill="none" />
+    <path d="M24 16V24L29 27" stroke="#D48F78" strokeWidth="2.5" strokeLinecap="round" />
     <circle cx="24" cy="24" r="2.5" fill="#4ADE80" />
   </svg>
 );

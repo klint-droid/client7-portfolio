@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { portfolioData } from '../data/portfolioData';
 import {
   IconStar,
@@ -7,7 +7,8 @@ import {
   IconUsers,
   IconMapPin,
   IconClock,
-  IconCheckCircle,
+  IconChevronLeft,
+  IconChevronRight,
 } from './Icons';
 import { scrollToSection } from '../utils/scroll';
 
@@ -15,8 +16,50 @@ interface HeroProps {
   onOpenContact: () => void;
 }
 
+const heroSlides = [
+  {
+    id: 1,
+    image: '/photos/Wenelove.png',
+    alt: 'Wenelove Del Castillo - Executive Virtual Assistant & Operations Leader',
+    title: 'Wenelove Del Castillo',
+    role: 'Executive Virtual Assistant & Operations Leader',
+    badge: '10+ Years Enterprise Support',
+    tags: ['Executive Care', 'Full-Time & Part-Time', 'Taguig, Metro Manila'],
+    objectPosition: 'center 15%',
+  },
+  {
+    id: 2,
+    image: '/photos/WeneloveDC.png',
+    alt: 'Wenelove Del Castillo - Senior Technical & Customer Support Specialist',
+    title: 'Wenelove Del Castillo',
+    role: 'Technical Support & L2 Enterprise Systems Specialist',
+    badge: 'CreditLens & LoanIQ Expert',
+    tags: ['50+ Staff Desk Lead', 'ITIL Quality Ops', 'Global Shifts'],
+    objectPosition: 'center 22%',
+  },
+];
+
 export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
   const { personal, metrics } = portfolioData;
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused, nextSlide]);
 
   const handlePrintCV = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -58,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                     display: 'inline-block',
                   }}
                 />
-                <span>Available for Remote Roles Worldwide</span>
+                <span>Available for Full-Time & Part-Time Remote Roles</span>
               </span>
               <span className="pill-badge gold">
                 <IconStar size={13} style={{ color: 'var(--gold-600)' }} />
@@ -169,108 +212,119 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             </div>
           </div>
 
-          {/* Right Column: Luxury Executive Credential Showcase Card (NO AI Photos) */}
+          {/* Right Column: Interactive Luxury Photo Slideshow Showcase */}
           <div className="hero-card-col">
             {/* Background Decorative Angled Frame */}
             <div className="hero-angled-frame" />
 
-            {/* Main Executive Credential Card */}
-            <div className="hero-executive-card">
-              {/* Card Top Brand & Badge */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <div
+            {/* Slideshow Card */}
+            <div
+              className="hero-slideshow-card"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              role="region"
+              aria-label="Executive Photo Slideshow"
+            >
+              {/* Slides Container */}
+              <div className="hero-slides-wrapper">
+                {heroSlides.map((slide, idx) => {
+                  const isActive = currentSlide === idx;
+                  return (
+                    <div
+                      key={slide.id}
+                      className={`hero-slide-item ${isActive ? 'active' : ''}`}
+                      aria-hidden={!isActive}
+                    >
+                      <img
+                        src={slide.image}
+                        alt={slide.alt}
+                        className="hero-slide-img"
+                        style={{ objectPosition: slide.objectPosition }}
+                        loading={idx === 0 ? 'eager' : 'lazy'}
+                      />
+                      {/* Gradient overlay for contrast */}
+                      <div className="hero-slide-overlay" />
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Top Bar Floating Badges */}
+              <div className="hero-slideshow-topbar">
+                <div className="hero-slide-status-pill">
+                  <span
+                    className="pulse-dot"
                     style={{
-                      width: '44px',
-                      height: '44px',
-                      borderRadius: '12px',
-                      backgroundColor: 'rgba(255, 255, 255, 0.12)',
-                      border: '1px solid var(--gold-400)',
-                      color: 'var(--gold-400)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontFamily: 'var(--font-serif)',
-                      fontWeight: 700,
-                      fontSize: '1.25rem',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
-                      flexShrink: 0,
+                      width: '7px',
+                      height: '7px',
+                      borderRadius: '50%',
+                      backgroundColor: '#4ade80',
+                      display: 'inline-block',
                     }}
-                  >
-                    WD
-                  </div>
-                  <div>
-                    <span style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: '1.05rem', color: '#ffffff', display: 'block' }}>
-                      {personal.name}
-                    </span>
-                    <span style={{ fontSize: '0.7rem', color: 'var(--gold-400)', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600 }}>
-                      Executive Portfolio
-                    </span>
-                  </div>
+                  />
+                  <span>VERIFIED SPECIALIST</span>
                 </div>
 
-                <div
-                  style={{
-                    backgroundColor: 'rgba(34, 197, 94, 0.15)',
-                    border: '1px solid rgba(34, 197, 94, 0.4)',
-                    padding: '0.25rem 0.6rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.7rem',
-                    fontWeight: 700,
-                    color: '#4ade80',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.35rem',
-                    flexShrink: 0,
-                  }}
-                >
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#4ade80' }} />
-                  <span>VERIFIED</span>
+                <div className="hero-slide-counter-badge">
+                  <span>0{currentSlide + 1} / 0{heroSlides.length}</span>
                 </div>
               </div>
 
-              {/* Core Executive Specializations */}
-              <div
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '1rem',
-                  padding: '1.15rem',
-                  marginBottom: '1.25rem',
-                }}
+              {/* Prev / Next Slide Navigation Controls */}
+              <button
+                type="button"
+                className="hero-slide-arrow-btn prev"
+                onClick={prevSlide}
+                aria-label="Previous photo slide"
+                id="hero-slide-prev-btn"
               >
-                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--gold-400)', fontWeight: 700, marginBottom: '0.55rem' }}>
-                  Enterprise Specializations
-                </div>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.85rem' }}>
-                  <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-on-dark-muted)' }}>
-                    <IconCheckCircle size={15} style={{ color: '#4ade80', flexShrink: 0 }} />
-                    <span>L2 Banking Systems Support (CreditLens, LoanIQ)</span>
-                  </li>
-                  <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-on-dark-muted)' }}>
-                    <IconCheckCircle size={15} style={{ color: '#4ade80', flexShrink: 0 }} />
-                    <span>IT Service Desk Operations (50+ Staff Led)</span>
-                  </li>
-                  <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-on-dark-muted)' }}>
-                    <IconCheckCircle size={15} style={{ color: '#4ade80', flexShrink: 0 }} />
-                    <span>Executive Calendar & Inbox Zero Triage</span>
-                  </li>
-                  <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-on-dark-muted)' }}>
-                    <IconCheckCircle size={15} style={{ color: '#4ade80', flexShrink: 0 }} />
-                    <span>ITIL Incident, Problem & Quality Assurance</span>
-                  </li>
-                </ul>
-              </div>
+                <IconChevronLeft size={18} />
+              </button>
 
-              {/* Bottom Quote & Trust Seal */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                <div>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--text-on-dark-muted)' }}>Operating Base</div>
-                  <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff' }}>Manila PHT • Global Shifts</div>
+              <button
+                type="button"
+                className="hero-slide-arrow-btn next"
+                onClick={nextSlide}
+                aria-label="Next photo slide"
+                id="hero-slide-next-btn"
+              >
+                <IconChevronRight size={18} />
+              </button>
+
+              {/* Bottom Caption Glassmorphism Card */}
+              <div className="hero-slide-caption-card">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.35rem' }}>
+                  <span className="hero-slide-badge-tag">
+                    {heroSlides[currentSlide].badge}
+                  </span>
+
+                  {/* Dot / Pill Indicators */}
+                  <div className="hero-slide-indicators">
+                    {heroSlides.map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setCurrentSlide(idx)}
+                        className={`hero-indicator-dot ${currentSlide === idx ? 'active' : ''}`}
+                        aria-label={`Go to photo slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--gold-400)', fontWeight: 600 }}>10+ YEARS</div>
-                  <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#ffffff' }}>PROVEN TRACK RECORD</div>
+
+                <h3 className="hero-slide-title">
+                  {heroSlides[currentSlide].title}
+                </h3>
+                <div className="hero-slide-role">
+                  {heroSlides[currentSlide].role}
+                </div>
+
+                <div className="hero-slide-tags">
+                  {heroSlides[currentSlide].tags.map((tag) => (
+                    <span key={tag} className="hero-slide-tag-chip">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -401,24 +455,224 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           inset: -10px;
           border-radius: 2rem;
           border: 1.5px solid var(--border-subtle);
-          background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(244,239,231,0.5) 100%);
+          background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(246, 239, 233, 0.6) 100%);
           z-index: 0;
           transform: rotate(-1.5deg);
         }
 
-        .hero-executive-card {
+        .hero-slideshow-card {
           position: relative;
           z-index: 1;
           width: 100%;
+          height: 520px;
           border-radius: 1.75rem;
-          box-shadow: var(--shadow-xl);
+          box-shadow: 0 24px 60px -12px rgba(42, 23, 37, 0.35), 0 0 0 1px rgba(212, 143, 120, 0.35);
           border: 3px solid #ffffff;
+          overflow: hidden;
           background-color: var(--green-950);
-          color: #ffffff;
-          padding: 2.25rem 1.75rem;
           display: flex;
           flex-direction: column;
           justifyContent: space-between;
+        }
+
+        .hero-slides-wrapper {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+
+        .hero-slide-item {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          transform: scale(1.05);
+          transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .hero-slide-item.active {
+          opacity: 1;
+          transform: scale(1);
+          pointer-events: auto;
+          z-index: 2;
+        }
+
+        .hero-slide-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .hero-slide-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            180deg,
+            rgba(27, 17, 24, 0.5) 0%,
+            rgba(27, 17, 24, 0.05) 28%,
+            rgba(27, 17, 24, 0.35) 60%,
+            rgba(27, 17, 24, 0.95) 100%
+          );
+          pointer-events: none;
+        }
+
+        .hero-slideshow-topbar {
+          position: relative;
+          z-index: 10;
+          padding: 1.25rem 1.25rem 0 1.25rem;
+          display: flex;
+          align-items: center;
+          justifyContent: space-between;
+        }
+
+        .hero-slide-status-pill {
+          background-color: rgba(41, 24, 36, 0.8);
+          border: 1px solid rgba(74, 222, 128, 0.45);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          padding: 0.35rem 0.75rem;
+          border-radius: 9999px;
+          font-size: 0.68rem;
+          font-weight: 700;
+          color: #4ade80;
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          letter-spacing: 0.05em;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-slide-counter-badge {
+          background-color: rgba(41, 24, 36, 0.8);
+          border: 1px solid rgba(212, 143, 120, 0.45);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          padding: 0.35rem 0.7rem;
+          border-radius: 9999px;
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: var(--gold-400);
+          letter-spacing: 0.06em;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-slide-arrow-btn {
+          position: absolute;
+          top: 48%;
+          transform: translateY(-50%);
+          z-index: 10;
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          background-color: rgba(41, 24, 36, 0.72);
+          border: 1px solid rgba(212, 143, 120, 0.4);
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          justifyContent: center;
+          cursor: pointer;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          transition: all 0.25s ease;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+          opacity: 0.85;
+        }
+
+        .hero-slide-arrow-btn:hover {
+          opacity: 1;
+          background-color: var(--green-900);
+          border-color: var(--gold-400);
+          transform: translateY(-50%) scale(1.1);
+          color: var(--gold-300);
+        }
+
+        .hero-slide-arrow-btn.prev {
+          left: 12px;
+        }
+
+        .hero-slide-arrow-btn.next {
+          right: 12px;
+        }
+
+        .hero-slide-caption-card {
+          position: relative;
+          z-index: 10;
+          margin: 1rem;
+          background: rgba(41, 24, 36, 0.88);
+          border: 1px solid rgba(212, 143, 120, 0.35);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-radius: 1.25rem;
+          padding: 1.15rem 1.25rem;
+          box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+          color: #ffffff;
+        }
+
+        .hero-slide-badge-tag {
+          font-size: 0.68rem;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          color: var(--gold-400);
+          font-weight: 700;
+        }
+
+        .hero-slide-indicators {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+
+        .hero-indicator-dot {
+          height: 6px;
+          border-radius: 9999px;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          background-color: rgba(255, 255, 255, 0.35);
+          width: 8px;
+        }
+
+        .hero-indicator-dot.active {
+          width: 24px;
+          background-color: var(--gold-400);
+          box-shadow: 0 0 8px rgba(212, 163, 89, 0.6);
+        }
+
+        .hero-slide-title {
+          font-family: var(--font-serif);
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0.2rem 0;
+          letter-spacing: -0.01em;
+          line-height: 1.2;
+        }
+
+        .hero-slide-role {
+          font-size: 0.82rem;
+          color: #e2e8f0;
+          font-weight: 500;
+          margin-bottom: 0.55rem;
+          line-height: 1.35;
+        }
+
+        .hero-slide-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.35rem;
+        }
+
+        .hero-slide-tag-chip {
+          font-size: 0.68rem;
+          background-color: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          color: #f1f5f9;
+          padding: 0.2rem 0.5rem;
+          border-radius: 6px;
+          font-weight: 500;
         }
 
         .badge-top-right {
@@ -491,9 +745,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           .hero-angled-frame {
             display: none;
           }
-          .hero-executive-card {
+          .hero-slideshow-card {
+            height: 470px;
             border-radius: 1.25rem;
-            padding: 1.5rem 1.15rem;
           }
           .badge-top-right,
           .badge-bottom-left {
