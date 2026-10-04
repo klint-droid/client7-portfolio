@@ -72,7 +72,7 @@ export const portfolioData = {
       tagline: 'High-Touch Calendar, Inbox Zero, Research & Seamless Back-Office Operations',
       description:
         'Providing reliable administrative and virtual support that frees busy executives and founders from daily operational friction, meeting conflicts, and administrative overhead.',
-      tools: ['Google Workspace', 'Microsoft 365', 'SharePoint', 'Outlook', 'OneDrive', 'Excel'],
+      tools: ['Google Workspace', 'Microsoft 365', 'SharePoint', 'Outlook', 'OneDrive', 'Google Meet', 'Excel'],
       deliverables: [
         'Multi-timezone calendar management, schedule deconfliction, and buffer optimization',
         'Inbox triage (Zero-Inbox methodology), priority categorization, and canned drafting',

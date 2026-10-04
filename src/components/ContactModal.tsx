@@ -31,7 +31,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    roleScope: 'Part-Time Virtual Assistance',
+    roleScope: 'Executive Support & Administration',
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -362,12 +362,13 @@ Sent from your portfolio website`;
                   outline: 'none',
                 }}
               >
-                <option value="Part-Time Virtual Assistance">Part-Time Virtual Assistance & Administration</option>
-                <option value="Full-Time Executive Support">Full-Time Executive Support & Administration</option>
-                <option value="L2 Banking Systems Support">L2 Banking Systems Support (CreditLens, LoanIQ)</option>
-                <option value="Customer Support Specialist">Customer Support & Technical Help Desk</option>
-                <option value="IT Service Desk Leadership">IT Service Desk Leadership & QA Operations</option>
-                <option value="Custom Project Scope">Custom Scope / Flexible Consultation</option>
+                <option value="Executive Support & Administration">Executive Support & Administration</option>
+                <option value="Customer Support & Technical Help Desk">Customer Support & Technical Help Desk</option>
+                <option value="Technical Support & Incident Management">Technical Support & Incident Management</option>
+                <option value="Operations Support & Project Coordination">Operations Support & Project Coordination</option>
+                <option value="Knowledge Base Documentation & Process Improvement">Knowledge Base Documentation & Process Improvement</option>
+                <option value="L2 Banking Systems Support (CreditLens, LoanIQ)">L2 Banking Systems Support (CreditLens, LoanIQ)</option>
+                <option value="Custom Scope / Flexible Consultation">Custom Scope / Flexible Consultation</option>
               </select>
             </div>
 

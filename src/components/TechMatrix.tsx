@@ -18,6 +18,8 @@ import {
   LogoZendesk,
   LogoRDP,
   LogoITIL,
+  LogoOneDrive,
+  LogoGoogleMeet,
 } from './ToolLogos';
 import { IconCheckCircle } from './Icons';
 
@@ -40,6 +42,7 @@ export const TechMatrix: React.FC = () => {
     { id: 'creditlens', name: 'CreditLens', category: 'banking', categoryLabel: 'L2 Banking (Moody\'s)', level: 'Expert', Logo: LogoCreditLens },
     { id: 'loaniq', name: 'LoanIQ', category: 'banking', categoryLabel: 'Syndicated Loans (Finastra)', level: 'Advanced', Logo: LogoLoanIQ },
     { id: 'm365', name: 'Microsoft 365', category: 'm365', categoryLabel: 'Enterprise Suite', level: 'Expert', Logo: LogoMicrosoft365 },
+    { id: 'onedrive', name: 'OneDrive', category: 'm365', categoryLabel: 'Cloud Storage & Sync', level: 'Expert', Logo: LogoOneDrive },
     { id: 'sharepoint', name: 'SharePoint', category: 'm365', categoryLabel: 'Knowledge Base SOPs', level: 'Expert', Logo: LogoSharePoint },
     { id: 'activedirectory', name: 'Active Directory', category: 'sysadmin', categoryLabel: 'User & Access Admin', level: 'Advanced', Logo: LogoActiveDirectory },
     { id: 'teamviewer', name: 'TeamViewer', category: 'sysadmin', categoryLabel: 'Remote Screen Assistance', level: 'Expert', Logo: LogoTeamViewer },
@@ -51,6 +54,7 @@ export const TechMatrix: React.FC = () => {
     { id: 'outlook', name: 'Outlook', category: 'm365', categoryLabel: 'Executive Inbox & Calendar', level: 'Expert', Logo: LogoOutlook },
     { id: 'excel', name: 'Microsoft Excel', category: 'm365', categoryLabel: 'Formulas & Data Trackers', level: 'Advanced', Logo: LogoExcel },
     { id: 'googleworkspace', name: 'Google Workspace', category: 'google', categoryLabel: 'Cloud Office Suite', level: 'Expert', Logo: LogoGoogleWorkspace },
+    { id: 'gmeet', name: 'Google Meet', category: 'google', categoryLabel: 'Video Conferencing', level: 'Expert', Logo: LogoGoogleMeet },
     { id: 'gmail', name: 'Gmail', category: 'google', categoryLabel: 'Zero-Inbox Triage', level: 'Expert', Logo: LogoGmail },
     { id: 'gcalendar', name: 'Google Calendar', category: 'google', categoryLabel: 'Multi-Timezone Booking', level: 'Expert', Logo: LogoGoogleCalendar },
     { id: 'gdrive', name: 'Google Drive', category: 'google', categoryLabel: 'Storage & Permissions', level: 'Expert', Logo: LogoGoogleDrive },
@@ -184,7 +188,7 @@ export const TechMatrix: React.FC = () => {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>
             <IconCheckCircle size={14} style={{ color: 'var(--green-700)' }} />
-            <span>18 Core Enterprise Platforms Supported</span>
+            <span>20 Core Enterprise Platforms Supported</span>
           </div>
         </div>
       </div>

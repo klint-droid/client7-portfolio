@@ -211,3 +211,39 @@ export const LogoITIL: FC<LogoProps> = ({ size = 44, className = '', style }) =>
     <circle cx="24" cy="24" r="2.5" fill="#4ADE80" />
   </svg>
 );
+
+// 19. Microsoft OneDrive Logo
+export const LogoOneDrive: FC<LogoProps> = ({ size = 44, className = '', style }) => (
+  <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className} style={style}>
+    <rect width="48" height="48" rx="12" fill="#F0F6FC" stroke="#D0E1F9" strokeWidth="1" />
+    <path
+      d="M32.5 32H16.2C13.9 32 12 30.1 12 27.8C12 25.8 13.4 24.1 15.4 23.7C15.8 20.5 18.5 18 21.8 18C23.2 18 24.5 18.5 25.6 19.3C26.7 17.3 28.9 16 31.4 16C35 16 38 18.9 38 22.5C38 23 37.9 23.5 37.8 24C39.6 24.8 40.8 26.6 40.8 28.6C40.8 30.5 39.3 32 37.4 32H32.5Z"
+      fill="#0078D4"
+    />
+    <path
+      d="M21.8 18C18.5 18 15.8 20.5 15.4 23.7C15.7 23.6 16 23.6 16.3 23.6C18.6 23.6 20.6 25 21.4 27H29.5C30.6 27 31.6 26.3 32 25.3C32.1 25.1 32.2 24.8 32.3 24.6C32.7 23.1 33.7 21.9 35.1 21.3C34.2 18.3 31.4 16 28 16C25.4 16 23.1 17.4 21.8 19.5"
+      fill="#28A8EA"
+      fillOpacity="0.85"
+    />
+    <path
+      d="M32.5 32H16.2C13.9 32 12 30.1 12 27.8C12 25.8 13.4 24.1 15.4 23.7C15.8 23.6 16.2 23.6 16.6 23.6C19.7 23.6 22.3 25.8 22.8 28.8C23.1 30.6 24.6 32 26.5 32H32.5Z"
+      fill="#005A9E"
+      fillOpacity="0.45"
+    />
+  </svg>
+);
+
+// 20. Google Meet Logo
+export const LogoGoogleMeet: FC<LogoProps> = ({ size = 44, className = '', style }) => (
+  <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className} style={style}>
+    <rect width="48" height="48" rx="12" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1" />
+    {/* Google Meet Camera body */}
+    <rect x="12" y="16" width="16" height="16" rx="3.5" fill="#00832D" />
+    <path d="M12 19.5C12 17.567 13.567 16 15.5 16H24.5C26.433 16 28 17.567 28 19.5V20H12V19.5Z" fill="#00AC47" />
+    <path d="M12 28H28V28.5C28 30.433 26.433 32 24.5 32H15.5C13.567 32 12 30.433 12 28.5V28Z" fill="#EA4335" />
+    <rect x="12" y="24" width="16" height="4" fill="#FFBA00" />
+    {/* Camera Cone / Arrow Lens */}
+    <path d="M28 21.5L36 16V32L28 26.5V21.5Z" fill="#2684FC" />
+    <path d="M28 26.5L36 32V30L28 24.5V26.5Z" fill="#0066DA" fillOpacity="0.3" />
+  </svg>
+);
