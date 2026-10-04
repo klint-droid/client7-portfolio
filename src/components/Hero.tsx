@@ -217,7 +217,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             {/* Background Decorative Angled Frame */}
             <div className="hero-angled-frame" />
 
-            {/* Slideshow Card - Clean, Unobstructed Crystal-Clear View */}
+            {/* Slideshow Card - Compact & Crisp View */}
             <div
               className="hero-slideshow-card"
               onMouseEnter={() => setIsPaused(true)}
@@ -247,7 +247,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                 })}
               </div>
 
-              {/* Minimal Top Bar Status Pill */}
+              {/* Minimal Top Bar Status & Slide Counter - Combined to Prevent Overlap */}
               <div className="hero-slideshow-topbar">
                 <div className="hero-slide-status-pill">
                   <span
@@ -261,6 +261,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                     }}
                   />
                   <span>VERIFIED SPECIALIST</span>
+                  <span style={{ opacity: 0.45, margin: '0 3px' }}>•</span>
+                  <span style={{ color: 'var(--gold-300)', fontWeight: 700 }}>
+                    0{currentSlide + 1} / 0{heroSlides.length}
+                  </span>
                 </div>
               </div>
 
@@ -272,7 +276,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                 aria-label="Previous photo slide"
                 id="hero-slide-prev-btn"
               >
-                <IconChevronLeft size={18} />
+                <IconChevronLeft size={17} />
               </button>
 
               <button
@@ -282,18 +286,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                 aria-label="Next photo slide"
                 id="hero-slide-next-btn"
               >
-                <IconChevronRight size={18} />
+                <IconChevronRight size={17} />
               </button>
             </div>
 
-            {/* Floating Badge: Top Right - Inset & Resized for 100% Visibility */}
+            {/* Floating Badge 1: Top Right - Shifted & Sized with Zero Overlap */}
             <div className="floating-badge badge-top-right">
               <div
                 className="badge-icon-box"
                 style={{
-                  width: '30px',
-                  height: '30px',
-                  borderRadius: '8px',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '9px',
                   backgroundColor: 'var(--gold-100)',
                   color: 'var(--gold-600)',
                   display: 'flex',
@@ -302,19 +306,47 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                   flexShrink: 0,
                 }}
               >
-                <IconStar size={15} />
+                <IconStar size={16} />
               </div>
               <div>
                 <div className="badge-title" style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-heading)', lineHeight: 1.2 }}>
                   10+ Years Track Record
                 </div>
                 <div className="badge-sub" style={{ fontSize: '0.66rem', color: 'var(--text-secondary)', lineHeight: 1.25 }}>
-                  Banking & IT Support
+                  Banking & Enterprise IT Support
                 </div>
               </div>
             </div>
 
-            {/* Floating Tag Card Situated Below Photo Frame - Inset & Fully Visible */}
+            {/* Floating Badge 2: Lower-Left on Photo - Shifted to NEVER Overlap the Bottom Panel */}
+            <div className="floating-badge badge-bottom-left">
+              <div
+                className="badge-icon-box"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '9px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                  color: '#4ade80',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}
+              >
+                <IconUsers size={16} />
+              </div>
+              <div>
+                <div className="badge-title" style={{ fontSize: '0.82rem', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+                  50+ IT Professionals
+                </div>
+                <div className="badge-sub" style={{ fontSize: '0.66rem', color: 'var(--text-on-dark-muted)', lineHeight: 1.25 }}>
+                  Supervised at ABS-CBN Desk
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Tag Card Situated Below Photo Frame - Non-Overlapping */}
             <div
               className="hero-floating-bottom-tag"
               onMouseEnter={() => setIsPaused(true)}
@@ -325,23 +357,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                   {heroSlides[currentSlide].badge}
                 </span>
 
-                {/* Combined Slide Counter + Progress Indicators */}
-                <div className="hero-slide-nav-meta">
-                  <span className="hero-slide-counter-chip">
-                    0{currentSlide + 1} / 0{heroSlides.length}
-                  </span>
-                  <div className="hero-slide-indicators">
-                    {heroSlides.map((_, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => setCurrentSlide(idx)}
-                        className={`hero-indicator-dot ${currentSlide === idx ? 'active' : ''}`}
-                        aria-label={`Go to photo slide ${idx + 1}`}
-                        title={`Photo ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
+                {/* Progress Indicators */}
+                <div className="hero-slide-indicators">
+                  {heroSlides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`hero-indicator-dot ${currentSlide === idx ? 'active' : ''}`}
+                      aria-label={`Go to photo slide ${idx + 1}`}
+                      title={`Photo ${idx + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
 
@@ -353,10 +380,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               </div>
 
               <div className="hero-slide-tags">
-                <span className="hero-slide-tag-chip highlight-chip">
-                  <IconUsers size={12} style={{ color: '#4ade80' }} />
-                  <span>50+ Staff Led</span>
-                </span>
                 {heroSlides[currentSlide].tags.map((tag) => (
                   <span key={tag} className="hero-slide-tag-chip">
                     {tag}
@@ -420,25 +443,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           gap: 0.85rem;
           align-items: center;
           margin-bottom: 2rem;
-           .hero-card-col {
+        }
+
+        .hero-card-col {
           position: relative;
           display: flex;
           flex-direction: column;
           align-items: center;
           width: 100%;
-          max-width: 440px;
+          max-width: 390px;
           margin: 0 auto;
-          padding: 0.5rem 0.5rem 1.25rem 0.5rem;
+          padding: 0.75rem 0.5rem 1.25rem 0.5rem;
           box-sizing: border-box;
         }
 
         .hero-angled-frame {
           position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 440px;
-          border-radius: 2rem;
+          top: 4px;
+          left: 4px;
+          right: 4px;
+          height: 370px;
+          border-radius: 1.75rem;
           border: 1.5px solid var(--border-subtle);
           background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(246, 239, 233, 0.6) 100%);
           z-index: 0;
@@ -449,9 +474,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           position: relative;
           z-index: 1;
           width: 100%;
-          height: 440px;
-          border-radius: 1.75rem;
-          box-shadow: 0 20px 48px -10px rgba(42, 23, 37, 0.28), 0 0 0 1px rgba(212, 143, 120, 0.3);
+          height: 370px;
+          border-radius: 1.6rem;
+          box-shadow: 0 18px 42px -10px rgba(42, 23, 37, 0.28), 0 0 0 1px rgba(212, 143, 120, 0.3);
           border: 3.5px solid #ffffff;
           overflow: hidden;
           background-color: var(--green-950);
@@ -489,62 +514,88 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
 
         .hero-slideshow-topbar {
           position: absolute;
-          top: 14px;
-          left: 14px;
+          top: 12px;
+          left: 12px;
           z-index: 5;
           pointer-events: none;
         }
 
         .hero-slide-status-pill {
-          background-color: rgba(41, 24, 36, 0.85);
-          border: 1px solid rgba(74, 222, 128, 0.5);
+          background-color: rgba(41, 24, 36, 0.88);
+          border: 1px solid rgba(74, 222, 128, 0.45);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
-          padding: 0.35rem 0.7rem;
+          padding: 0.32rem 0.65rem;
           border-radius: 9999px;
-          font-size: 0.67rem;
+          font-size: 0.65rem;
           font-weight: 700;
           color: #4ade80;
           display: flex;
           align-items: center;
-          gap: 0.45rem;
-          letter-spacing: 0.05em;
-          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+          gap: 0.35rem;
+          letter-spacing: 0.04em;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
           pointer-events: auto;
         }
 
         .badge-top-right {
           position: absolute;
-          top: 14px;
-          right: 14px;
-          z-index: 10;
+          top: -6px;
+          right: 2px;
+          z-index: 12;
           background: rgba(255, 255, 255, 0.96);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
-          border: 1.5px solid rgba(212, 143, 120, 0.45);
+          border: 1px solid rgba(212, 143, 120, 0.45);
           border-radius: 0.95rem;
-          padding: 0.48rem 0.8rem;
-          box-shadow: 0 8px 24px rgba(42, 23, 37, 0.18);
+          padding: 0.42rem 0.72rem;
+          box-shadow: 0 8px 24px rgba(42, 23, 37, 0.16);
           display: flex;
           align-items: center;
-          gap: 0.55rem;
-          max-width: 200px;
+          gap: 0.5rem;
+          max-width: 185px;
           pointer-events: auto;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .badge-top-right:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 28px rgba(42, 23, 37, 0.24);
+          box-shadow: 0 12px 28px rgba(42, 23, 37, 0.22);
+        }
+
+        .badge-bottom-left {
+          position: absolute;
+          top: 230px;
+          left: -10px;
+          z-index: 12;
+          background-color: rgba(38, 22, 34, 0.95);
+          color: #ffffff;
+          border: 1px solid rgba(212, 143, 120, 0.4);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border-radius: 0.95rem;
+          padding: 0.42rem 0.72rem;
+          box-shadow: 0 10px 28px rgba(42, 23, 37, 0.32);
+          display: flex;
+          align-items: center;
+          gap: 0.55rem;
+          max-width: 195px;
+          pointer-events: auto;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .badge-bottom-left:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 14px 32px rgba(42, 23, 37, 0.4);
         }
 
         .hero-slide-arrow-btn {
           position: absolute;
-          top: 50%;
+          top: 38%;
           transform: translateY(-50%);
-          z-index: 10;
-          width: 36px;
-          height: 36px;
+          z-index: 8;
+          width: 34px;
+          height: 34px;
           border-radius: 50%;
           background-color: rgba(41, 24, 36, 0.78);
           border: 1px solid rgba(212, 143, 120, 0.4);
@@ -569,25 +620,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
         }
 
         .hero-slide-arrow-btn.prev {
-          left: 12px;
+          left: 10px;
         }
 
         .hero-slide-arrow-btn.next {
-          right: 12px;
+          right: 10px;
         }
 
         .hero-floating-bottom-tag {
           position: relative;
           z-index: 10;
-          width: calc(100% - 28px);
-          max-width: 395px;
+          width: calc(100% - 16px);
+          max-width: 374px;
           margin: -24px auto 0 auto;
-          background: rgba(38, 22, 34, 0.94);
+          background: rgba(38, 22, 34, 0.95);
           border: 1.5px solid rgba(212, 143, 120, 0.45);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border-radius: 1.25rem;
-          padding: 1.05rem 1.2rem;
+          border-radius: 1.15rem;
+          padding: 0.95rem 1.15rem;
           box-shadow: 0 16px 36px -6px rgba(42, 23, 37, 0.38);
           color: #ffffff;
           transition: all 0.3s ease;
@@ -613,22 +664,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           letter-spacing: 0.06em;
           color: var(--gold-400);
           font-weight: 700;
-        }
-
-        .hero-slide-nav-meta {
-          display: flex;
-          align-items: center;
-          gap: 0.55rem;
-        }
-
-        .hero-slide-counter-chip {
-          font-size: 0.68rem;
-          font-weight: 700;
-          color: var(--gold-300);
-          background-color: rgba(255, 255, 255, 0.1);
-          padding: 0.15rem 0.45rem;
-          border-radius: 9999px;
-          letter-spacing: 0.04em;
         }
 
         .hero-slide-indicators {
@@ -691,13 +726,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           gap: 0.3rem;
         }
 
-        .hero-slide-tag-chip.highlight-chip {
-          background-color: rgba(74, 222, 128, 0.15);
-          border-color: rgba(74, 222, 128, 0.4);
-          color: #86efac;
-          font-weight: 600;
-        }
-
         .metrics-grid {
           margin-top: 4.5rem;
           background-color: var(--bg-surface);
@@ -730,26 +758,33 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
 
         @media (max-width: 768px) {
           .hero-card-col {
-            padding: 0 0.5rem 1rem 0.5rem;
+            max-width: 360px;
+            padding: 0.5rem 0.5rem 1rem 0.5rem;
           }
           .hero-angled-frame {
             display: none;
           }
           .hero-slideshow-card {
-            height: 380px;
-            border-radius: 1.35rem;
-          }
-          .hero-floating-bottom-tag {
-            margin-top: -20px;
-            width: calc(100% - 16px);
-            padding: 0.95rem 1rem;
-            border-radius: 1rem;
+            height: 330px;
+            border-radius: 1.25rem;
           }
           .badge-top-right {
-            top: 10px;
-            right: 10px;
-            padding: 0.4rem 0.65rem;
-            max-width: 180px;
+            top: -6px;
+            right: 0px;
+            padding: 0.35rem 0.55rem;
+            max-width: 155px;
+          }
+          .badge-bottom-left {
+            top: 200px;
+            left: -4px;
+            padding: 0.35rem 0.55rem;
+            max-width: 165px;
+          }
+          .hero-floating-bottom-tag {
+            margin-top: -18px;
+            width: 100%;
+            padding: 0.85rem 0.95rem;
+            border-radius: 1rem;
           }
           .metrics-grid {
             margin-top: 2.75rem;
@@ -781,23 +816,39 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             justify-content: center;
           }
           .hero-slide-status-pill {
-            padding: 0.28rem 0.55rem;
-            font-size: 0.62rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.6rem;
           }
           .badge-top-right {
-            padding: 0.35rem 0.55rem;
-            max-width: 160px;
-            gap: 0.4rem;
+            padding: 0.3rem 0.5rem;
+            max-width: 145px;
+            gap: 0.35rem;
           }
           .badge-top-right .badge-icon-box {
-            width: 24px !important;
-            height: 24px !important;
+            width: 22px !important;
+            height: 22px !important;
           }
           .badge-top-right .badge-title {
-            font-size: 0.72rem !important;
+            font-size: 0.7rem !important;
           }
           .badge-top-right .badge-sub {
-            font-size: 0.6rem !important;
+            font-size: 0.58rem !important;
+          }
+          .badge-bottom-left {
+            padding: 0.3rem 0.5rem;
+            max-width: 155px;
+            top: 205px;
+            gap: 0.35rem;
+          }
+          .badge-bottom-left .badge-icon-box {
+            width: 22px !important;
+            height: 22px !important;
+          }
+          .badge-bottom-left .badge-title {
+            font-size: 0.72rem !important;
+          }
+          .badge-bottom-left .badge-sub {
+            font-size: 0.58rem !important;
           }
           .metrics-grid {
             grid-template-columns: 1fr !important;
