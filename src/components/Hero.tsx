@@ -34,7 +34,7 @@ const heroSlides = [
     title: 'Wenelove Del Castillo',
     role: 'Technical Support & L2 Enterprise Systems Specialist',
     badge: 'CreditLens & LoanIQ Expert',
-    tags: ['50+ Staff Desk Lead', 'ITIL Quality Ops', 'Global Shifts'],
+    tags: ['Enterprise Service Desk', 'ITIL Quality Ops', 'Global Shifts'],
     objectPosition: 'center 12%',
   },
 ];
@@ -314,35 +314,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               </div>
             </div>
 
-            {/* Floating Badge 2: Lower-Left on Photo - Resized with Zero Overlap */}
-            <div className="floating-badge badge-bottom-left">
-              <div
-                className="badge-icon-box"
-                style={{
-                  width: '26px',
-                  height: '26px',
-                  borderRadius: '7px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.12)',
-                  color: '#4ade80',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}
-              >
-                <IconUsers size={14} />
-              </div>
-              <div>
-                <div className="badge-title" style={{ fontSize: '0.74rem', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
-                  50+ IT Professionals
-                </div>
-                <div className="badge-sub" style={{ fontSize: '0.6rem', color: 'var(--text-on-dark-muted)', lineHeight: 1.2 }}>
-                  ABS-CBN Service Desk
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Tag Card Situated Below Photo Frame - Non-Overlapping */}
+            {/* Floating Tag Card Situated Below Photo Frame - Non-Overlapping & Clean Photo Area */}
             <div
               className="hero-floating-bottom-tag"
               onMouseEnter={() => setIsPaused(true)}
@@ -378,6 +350,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               </h3>
               <div className="hero-slide-role">
                 {heroSlides[currentSlide].role}
+              </div>
+
+              {/* Repositioned Credential Card: 50+ IT Professionals Supervised */}
+              <div className="hero-slide-stat-card">
+                <div className="hero-stat-icon-box">
+                  <IconUsers size={14} />
+                </div>
+                <div className="hero-stat-content">
+                  <span className="hero-stat-highlight">50+ IT Professionals Supervised</span>
+                  <span className="hero-stat-sub">ABS-CBN Service Desk</span>
+                </div>
               </div>
 
               <div className="hero-slide-tags">
@@ -564,31 +547,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           box-shadow: 0 10px 24px rgba(42, 23, 37, 0.22);
         }
 
-        .badge-bottom-left {
-          position: absolute;
-          top: 235px;
-          left: 10px;
-          z-index: 12;
-          background-color: rgba(38, 22, 34, 0.95);
-          color: #ffffff;
-          border: 1px solid rgba(212, 143, 120, 0.4);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          border-radius: 0.85rem;
-          padding: 0.32rem 0.58rem;
-          box-shadow: 0 8px 22px rgba(42, 23, 37, 0.32);
-          display: flex;
-          align-items: center;
-          gap: 0.45rem;
-          max-width: 160px;
-          pointer-events: auto;
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
 
-        .badge-bottom-left:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 12px 28px rgba(42, 23, 37, 0.4);
-        }
 
         .hero-slide-arrow-btn {
           position: absolute;
@@ -720,8 +679,55 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           font-size: 0.82rem;
           color: #e2e8f0;
           font-weight: 500;
-          margin-bottom: 0.55rem;
+          margin-bottom: 0.4rem;
           line-height: 1.35;
+        }
+
+        .hero-slide-stat-card {
+          display: flex;
+          align-items: center;
+          gap: 0.55rem;
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(212, 143, 120, 0.35);
+          border-radius: 0.75rem;
+          padding: 0.38rem 0.65rem;
+          margin: 0.4rem 0 0.55rem 0;
+          transition: all 0.25s ease;
+        }
+
+        .hero-slide-stat-card:hover {
+          background: rgba(255, 255, 255, 0.12);
+          border-color: var(--gold-400);
+        }
+
+        .hero-stat-icon-box {
+          width: 24px;
+          height: 24px;
+          border-radius: 6px;
+          background-color: rgba(74, 222, 120, 0.18);
+          color: #4ade80;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .hero-stat-content {
+          display: flex;
+          flex-direction: column;
+          line-height: 1.25;
+        }
+
+        .hero-stat-highlight {
+          font-size: 0.74rem;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: -0.01em;
+        }
+
+        .hero-stat-sub {
+          font-size: 0.62rem;
+          color: var(--gold-300);
         }
 
         .hero-slide-tags {
@@ -791,12 +797,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             padding: 0.3rem 0.52rem;
             max-width: 140px;
           }
-          .badge-bottom-left {
-            top: 210px;
-            left: 8px;
-            padding: 0.3rem 0.52rem;
-            max-width: 145px;
-          }
           .hero-floating-bottom-tag {
             margin-top: -18px;
             width: 100%;
@@ -851,23 +851,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             font-size: 0.68rem !important;
           }
           .badge-top-right .badge-sub {
-            font-size: 0.56rem !important;
-          }
-          .badge-bottom-left {
-            top: 205px;
-            left: 8px;
-            padding: 0.28rem 0.45rem;
-            max-width: 135px;
-            gap: 0.3rem;
-          }
-          .badge-bottom-left .badge-icon-box {
-            width: 20px !important;
-            height: 20px !important;
-          }
-          .badge-bottom-left .badge-title {
-            font-size: 0.68rem !important;
-          }
-          .badge-bottom-left .badge-sub {
             font-size: 0.56rem !important;
           }
           .metrics-grid {
