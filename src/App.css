@@ -29,6 +29,49 @@
   animation: floatSlow 5s ease-in-out infinite;
 }
 
+/* ==========================================================================
+   Scroll Reveal Fade-in Animations (triggered as user scrolls down)
+   ========================================================================== */
+.scroll-reveal-init {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-init.scroll-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered card reveals */
+.services-grid .neutral-card:nth-child(1) { transition-delay: 0.05s; }
+.services-grid .neutral-card:nth-child(2) { transition-delay: 0.14s; }
+.services-grid .neutral-card:nth-child(3) { transition-delay: 0.23s; }
+.services-grid .neutral-card:nth-child(4) { transition-delay: 0.32s; }
+
+.reliability-grid .neutral-card:nth-child(1) { transition-delay: 0.04s; }
+.reliability-grid .neutral-card:nth-child(2) { transition-delay: 0.10s; }
+.reliability-grid .neutral-card:nth-child(3) { transition-delay: 0.16s; }
+.reliability-grid .neutral-card:nth-child(4) { transition-delay: 0.22s; }
+.reliability-grid .neutral-card:nth-child(5) { transition-delay: 0.28s; }
+.reliability-grid .neutral-card:nth-child(6) { transition-delay: 0.34s; }
+
+.metrics-grid .metric-item:nth-child(1) { transition-delay: 0.05s; }
+.metrics-grid .metric-item:nth-child(2) { transition-delay: 0.12s; }
+.metrics-grid .metric-item:nth-child(3) { transition-delay: 0.19s; }
+.metrics-grid .metric-item:nth-child(4) { transition-delay: 0.26s; }
+.metrics-grid .metric-item:nth-child(5) { transition-delay: 0.33s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 @media print {
   header, footer, .btn, button {
     display: none !important;
@@ -40,5 +83,9 @@
   .container {
     max-width: 100% !important;
     padding: 0 !important;
+  }
+  .scroll-reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

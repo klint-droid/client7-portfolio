@@ -10,8 +10,11 @@ import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { scrollToSection } from './utils/scroll';
+import { useScrollReveal } from './utils/useScrollReveal';
 
 export function App() {
+  useScrollReveal();
+
   const [contactOpen, setContactOpen] = useState(false);
   const [prefillSubject, setPrefillSubject] = useState('');
   const [prefillMessage, setPrefillMessage] = useState('');
