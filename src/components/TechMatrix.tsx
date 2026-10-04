@@ -68,12 +68,7 @@ export const TechMatrix: React.FC = () => {
           {filteredCategories.map((catGroup) => (
             <div
               key={catGroup.category}
-              className="neutral-card"
-              style={{
-                backgroundColor: 'var(--bg-surface)',
-                borderRadius: '1.5rem',
-                padding: '2rem 2.25rem',
-              }}
+              className="neutral-card tech-group-card"
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.85rem' }}>
                 <div
@@ -95,13 +90,7 @@ export const TechMatrix: React.FC = () => {
                 </h3>
               </div>
 
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                  gap: '1.25rem',
-                }}
-              >
+              <div className="tech-tools-grid">
                 {catGroup.tools.map((tool) => (
                   <div
                     key={tool.name}
@@ -154,6 +143,29 @@ export const TechMatrix: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .tech-group-card {
+          background-color: var(--bg-surface);
+          border-radius: 1.5rem;
+          padding: 2rem 2.25rem;
+        }
+        .tech-tools-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+          gap: 1.25rem;
+        }
+        @media (max-width: 640px) {
+          .tech-group-card {
+            padding: 1.35rem 1.15rem !important;
+            border-radius: 1.15rem !important;
+          }
+          .tech-tools-grid {
+            grid-template-columns: 1fr;
+            gap: 0.85rem;
+          }
+        }
+      `}</style>
     </section>
   );
 };

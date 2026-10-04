@@ -30,28 +30,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
     >
       <div className="container">
         {/* Pre-Footer Big CTA Ribbon */}
-        <div
-          style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            borderRadius: '1.5rem',
-            padding: '3rem 2.5rem',
-            marginBottom: '4.5rem',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '2rem',
-          }}
-        >
+        <div className="footer-cta-ribbon">
           <div style={{ maxWidth: '640px' }}>
             <span className="pill-badge gold" style={{ marginBottom: '0.75rem', fontSize: '0.76rem' }}>
               <IconShieldCheck size={14} /> Immediate Capacity Available
             </span>
-            <h3 style={{ fontSize: '2rem', color: '#ffffff', marginBottom: '0.5rem' }}>
+            <h3 style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', color: '#ffffff', marginBottom: '0.5rem' }}>
               Ready to elevate your operational efficiency?
             </h3>
-            <p style={{ color: 'var(--text-on-dark-muted)', fontSize: '0.98rem' }}>
+            <p style={{ color: 'var(--text-on-dark-muted)', fontSize: '0.96rem' }}>
               Providing 10+ years of high-trust customer support, L2 enterprise systems troubleshooting,
               and executive virtual assistance worldwide.
             </p>
@@ -60,28 +47,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           <button
             type="button"
             onClick={onOpenContact}
-            style={{
-              backgroundColor: 'var(--gold-500)',
-              color: 'var(--green-950)',
-              fontWeight: 700,
-              fontSize: '1rem',
-              padding: '1rem 2.25rem',
-              borderRadius: '999px',
-              boxShadow: '0 8px 24px rgba(197, 155, 83, 0.35)',
-              transition: 'transform 0.2s, background-color 0.2s',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--gold-400)';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--gold-500)';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
+            className="footer-cta-btn"
             id="footer-cta-contact"
           >
             <span>Start a Conversation</span>
@@ -90,15 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
         </div>
 
         {/* Main Footer Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '3rem',
-            paddingBottom: '3.5rem',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
-        >
+        <div className="footer-main-grid">
           {/* Brand info */}
           <div style={{ maxWidth: '340px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -212,15 +170,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               </button>
               <button
                 type="button"
-                onClick={() => scrollToSection('calculator')}
-                style={{ textAlign: 'left', color: 'var(--text-on-dark-muted)', cursor: 'pointer' }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-on-dark-muted)')}
-              >
-                Capacity Cost Estimator
-              </button>
-              <button
-                type="button"
                 onClick={() => scrollToSection('experience')}
                 style={{ textAlign: 'left', color: 'var(--text-on-dark-muted)', cursor: 'pointer' }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
@@ -292,6 +241,63 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           </button>
         </div>
       </div>
+
+      <style>{`
+        .footer-cta-ribbon {
+          background-color: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 1.5rem;
+          padding: 3rem 2.5rem;
+          margin-bottom: 4.5rem;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 2rem;
+        }
+        .footer-cta-btn {
+          background-color: var(--gold-500);
+          color: var(--green-950);
+          font-weight: 700;
+          font-size: 1rem;
+          padding: 1rem 2.25rem;
+          border-radius: 999px;
+          box-shadow: 0 8px 24px rgba(197, 155, 83, 0.35);
+          transition: transform 0.2s, background-color 0.2s;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          border: none;
+        }
+        .footer-cta-btn:hover {
+          background-color: var(--gold-400);
+          transform: translateY(-2px);
+        }
+        .footer-main-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+          gap: 3rem;
+          padding-bottom: 3.5rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 640px) {
+          .footer-cta-ribbon {
+            padding: 1.75rem 1.25rem;
+            margin-bottom: 3rem;
+            border-radius: 1.25rem;
+          }
+          .footer-cta-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.85rem 1.5rem;
+          }
+          .footer-main-grid {
+            gap: 2rem;
+            padding-bottom: 2.5rem;
+          }
+        }
+      `}</style>
     </footer>
   );
 };

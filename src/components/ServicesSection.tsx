@@ -60,15 +60,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
         </div>
 
         {/* Filter Pills */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            gap: '0.65rem',
-            marginBottom: '3rem',
-          }}
-        >
+        <div className="services-filters">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
@@ -91,13 +83,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
         </div>
 
         {/* Services Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-            gap: '2rem',
-          }}
-        >
+        <div className="services-grid">
           {filteredServices.map((service) => (
             <div
               key={service.id}
@@ -259,6 +245,31 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
           ))}
         </div>
       </div>
+
+      <style>{`
+        .services-filters {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 0.65rem;
+          margin-bottom: 3rem;
+        }
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+          gap: 2rem;
+        }
+        @media (max-width: 640px) {
+          .services-filters {
+            gap: 0.45rem;
+            margin-bottom: 2rem;
+          }
+          .services-grid {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+          }
+        }
+      `}</style>
     </section>
   );
 };

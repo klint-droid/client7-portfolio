@@ -3,7 +3,6 @@ import './App.css';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ServicesSection } from './components/ServicesSection';
-import { WorkloadCalculator } from './components/WorkloadCalculator';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { TechMatrix } from './components/TechMatrix';
 import { ReliabilitySection } from './components/ReliabilitySection';
@@ -43,14 +42,6 @@ export function App() {
     setContactOpen(true);
   };
 
-  const handleCustomInquiry = (details: string) => {
-    setPrefillSubject('Operations Scope & Support Capacity Inquiry');
-    setPrefillMessage(
-      `Hi Wenelove,\n\nI evaluated our support and operations requirements using your calculator tool:\n${details}\n\nLet's discuss how quickly we can onboard you into our operations.`
-    );
-    setContactOpen(true);
-  };
-
   return (
     <div className="portfolio-app" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar onOpenContact={handleOpenContact} />
@@ -58,7 +49,6 @@ export function App() {
       <main style={{ flexGrow: 1 }}>
         <Hero onOpenContact={handleOpenContact} />
         <ServicesSection onSelectService={handleSelectService} />
-        <WorkloadCalculator onCustomInquiry={handleCustomInquiry} />
         <ExperienceTimeline />
         <TechMatrix />
         <ReliabilitySection />

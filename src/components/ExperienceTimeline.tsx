@@ -93,16 +93,7 @@ export const ExperienceTimeline: React.FC = () => {
           </div>
 
           {/* Right Column: Detailed Active Role Card */}
-          <div
-            className="neutral-card"
-            style={{
-              backgroundColor: 'var(--bg-surface)',
-              border: '1.5px solid var(--border-subtle)',
-              borderRadius: '1.5rem',
-              padding: '2.5rem',
-              boxShadow: 'var(--shadow-md)',
-            }}
-          >
+          <div className="neutral-card exp-detail-card">
             {/* Header info */}
             <div
               style={{
@@ -121,7 +112,7 @@ export const ExperienceTimeline: React.FC = () => {
                   <IconShieldCheck size={13} style={{ color: 'var(--green-700)' }} />
                   <span>{activeRole.type}</span>
                 </span>
-                <h3 style={{ fontSize: '1.65rem', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
+                <h3 style={{ fontSize: 'clamp(1.35rem, 3.5vw, 1.65rem)', color: 'var(--text-heading)', marginBottom: '0.35rem' }}>
                   {activeRole.role}
                 </h3>
                 <div style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--green-850)' }}>
@@ -129,7 +120,7 @@ export const ExperienceTimeline: React.FC = () => {
                 </div>
               </div>
 
-              <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+              <div className="exp-meta-right" style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
                   <IconCalendar size={14} style={{ color: 'var(--green-800)' }} />
                   <span>{activeRole.period}</span>
@@ -251,9 +242,26 @@ export const ExperienceTimeline: React.FC = () => {
       </div>
 
       <style>{`
+        .exp-detail-card {
+          background-color: var(--bg-surface);
+          border: 1.5px solid var(--border-subtle);
+          border-radius: 1.5rem;
+          padding: 2.5rem;
+          box-shadow: var(--shadow-md);
+        }
         @media (min-width: 920px) {
           .experience-layout {
             grid-template-columns: 0.85fr 1.35fr !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .exp-detail-card {
+            padding: 1.5rem 1.15rem !important;
+            border-radius: 1.25rem !important;
+          }
+          .exp-meta-right {
+            text-align: left !important;
+            align-items: flex-start !important;
           }
         }
       `}</style>

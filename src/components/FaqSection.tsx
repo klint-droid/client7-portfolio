@@ -38,22 +38,13 @@ export const FaqSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => toggleFaq(idx)}
-                  style={{
-                    width: '100%',
-                    padding: '1.35rem 1.75rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '1rem',
-                    textAlign: 'left',
-                    cursor: 'pointer',
-                  }}
+                  className="faq-trigger-btn"
                   id={`faq-btn-${idx}`}
                 >
                   <span
                     style={{
                       fontFamily: 'var(--font-serif)',
-                      fontSize: '1.15rem',
+                      fontSize: 'clamp(1rem, 3.2vw, 1.15rem)',
                       fontWeight: 600,
                       color: isOpen ? 'var(--green-900)' : 'var(--text-heading)',
                     }}
@@ -82,16 +73,7 @@ export const FaqSection: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div
-                    style={{
-                      padding: '0 1.75rem 1.5rem 1.75rem',
-                      color: 'var(--text-secondary)',
-                      fontSize: '0.95rem',
-                      lineHeight: 1.7,
-                      borderTop: '1px solid var(--border-subtle)',
-                      paddingTop: '1rem',
-                    }}
-                  >
+                  <div className="faq-content-box">
                     <p>{faq.answer}</p>
                   </div>
                 )}
@@ -100,6 +82,38 @@ export const FaqSection: React.FC = () => {
           })}
         </div>
       </div>
+
+      <style>{`
+        .faq-trigger-btn {
+          width: 100%;
+          padding: 1.35rem 1.75rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+          text-align: left;
+          cursor: pointer;
+          background: transparent;
+          border: none;
+        }
+        .faq-content-box {
+          padding: 0 1.75rem 1.5rem 1.75rem;
+          color: var(--text-secondary);
+          font-size: 0.95rem;
+          line-height: 1.7;
+          border-top: 1px solid var(--border-subtle);
+          padding-top: 1rem;
+        }
+        @media (max-width: 640px) {
+          .faq-trigger-btn {
+            padding: 1.1rem 1rem !important;
+          }
+          .faq-content-box {
+            padding: 0 1rem 1.25rem 1rem !important;
+            font-size: 0.9rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

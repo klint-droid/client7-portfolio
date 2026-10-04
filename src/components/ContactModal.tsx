@@ -79,32 +79,11 @@ Sent from your portfolio website`;
 
   return (
     <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        backgroundColor: 'rgba(12, 35, 23, 0.65)',
-        backdropFilter: 'blur(8px)',
-        zIndex: 100,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '1.5rem',
-      }}
+      className="modal-backdrop"
       onClick={onClose}
     >
       <div
-        style={{
-          backgroundColor: 'var(--bg-surface)',
-          borderRadius: '1.75rem',
-          maxWidth: '680px',
-          width: '100%',
-          maxHeight: '92vh',
-          overflowY: 'auto',
-          boxShadow: 'var(--shadow-xl)',
-          border: '1px solid var(--border-medium)',
-          padding: '2.5rem',
-          position: 'relative',
-        }}
+        className="modal-dialog-box"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -146,16 +125,7 @@ Sent from your portfolio website`;
         </div>
 
         {/* Quick Contact Buttons Row */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '0.85rem',
-            marginBottom: '2rem',
-            paddingBottom: '1.75rem',
-            borderBottom: '1px solid var(--border-subtle)',
-          }}
-        >
+        <div className="contact-quick-grid">
           {/* Email Copy */}
           <div
             style={{
@@ -387,7 +357,7 @@ Sent from your portfolio website`;
             </div>
 
             {/* Submit & External Actions */}
-            <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+            <div className="modal-actions-row">
               <button
                 type="submit"
                 className="btn btn-primary"
@@ -411,6 +381,70 @@ Sent from your portfolio website`;
           </form>
         )}
       </div>
+
+      <style>{`
+        .modal-backdrop {
+          position: fixed;
+          inset: 0;
+          background-color: rgba(12, 35, 23, 0.65);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1.5rem;
+        }
+        .modal-dialog-box {
+          background-color: var(--bg-surface);
+          border-radius: 1.75rem;
+          max-width: 680px;
+          width: 100%;
+          max-height: 92vh;
+          overflow-y: auto;
+          box-shadow: var(--shadow-xl);
+          border: 1px solid var(--border-medium);
+          padding: 2.5rem;
+          position: relative;
+        }
+        .contact-quick-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+          gap: 0.85rem;
+          margin-bottom: 2rem;
+          padding-bottom: 1.75rem;
+          border-bottom: 1px solid var(--border-subtle);
+        }
+        .modal-actions-row {
+          display: flex;
+          gap: 0.85rem;
+          flex-wrap: wrap;
+          margin-top: 0.5rem;
+        }
+        @media (max-width: 640px) {
+          .modal-backdrop {
+            padding: 0.75rem 0.5rem;
+          }
+          .modal-dialog-box {
+            padding: 1.5rem 1.15rem;
+            border-radius: 1.25rem;
+            max-height: 94vh;
+          }
+          .contact-quick-grid {
+            grid-template-columns: 1fr;
+            gap: 0.65rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.25rem;
+          }
+          .modal-actions-row {
+            flex-direction: column;
+          }
+          .modal-actions-row .btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </div>
   );
 };

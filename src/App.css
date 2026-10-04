@@ -30,7 +30,7 @@
 }
 
 @media print {
-  header, footer, #calculator, .btn, button {
+  header, footer, .btn, button {
     display: none !important;
   }
   body {

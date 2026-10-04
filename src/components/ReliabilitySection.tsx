@@ -42,14 +42,7 @@ export const ReliabilitySection: React.FC = () => {
         </div>
 
         {/* Big Grid of 6 Reliability Pillars */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '1.75rem',
-            marginBottom: '3rem',
-          }}
-        >
+        <div className="reliability-grid">
           {reliability.specs.map((item, idx) => (
             <div
               key={item.title}
@@ -117,43 +110,70 @@ export const ReliabilitySection: React.FC = () => {
           className="green-card"
           style={{
             borderRadius: '1.5rem',
-            padding: '2.5rem',
             display: 'flex',
             flexDirection: 'column',
             gap: '1.25rem',
           }}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
             <div>
               <span className="pill-badge gold" style={{ marginBottom: '0.5rem' }}>
                 Remote First Collaboration
               </span>
-              <h3 style={{ fontSize: '1.5rem', color: '#ffffff', marginBottom: '0.35rem' }}>
+              <h3 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.5rem)', color: '#ffffff', marginBottom: '0.35rem' }}>
                 Seamless Timezone Overlap Across 4 Continents
               </h3>
-              <p style={{ color: 'var(--text-on-dark-muted)', fontSize: '0.95rem', maxWidth: '680px' }}>
+              <p style={{ color: 'var(--text-on-dark-muted)', fontSize: '0.92rem', maxWidth: '680px' }}>
                 With a base in the Philippines (PHT / UTC+8), I easily support full-time schedules or structured overlap
                 hours across US Eastern (EST), US Pacific (PST), United Kingdom (GMT), and Australian Eastern (AEST).
               </p>
             </div>
 
-            <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+            <div className="shifts-badge-row">
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--gold-400)', fontFamily: 'var(--font-serif)' }}>🇺🇸 US Shifts</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-on-dark-muted)' }}>EST & PST Compatible</div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--gold-400)', fontFamily: 'var(--font-serif)' }}>🇺🇸 US Shifts</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-on-dark-muted)' }}>EST & PST Compatible</div>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--gold-400)', fontFamily: 'var(--font-serif)' }}>🇬🇧 UK / EMEA</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-on-dark-muted)' }}>Convenient Hours</div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--gold-400)', fontFamily: 'var(--font-serif)' }}>🇬🇧 UK / EMEA</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-on-dark-muted)' }}>Convenient Hours</div>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--gold-400)', fontFamily: 'var(--font-serif)' }}>🇦🇺 Australia</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-on-dark-muted)' }}>Direct Business Hours</div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--gold-400)', fontFamily: 'var(--font-serif)' }}>🇦🇺 Australia</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-on-dark-muted)' }}>Direct Business Hours</div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        .reliability-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+          gap: 1.75rem;
+          margin-bottom: 3rem;
+        }
+        .shifts-badge-row {
+          display: flex;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+        }
+        @media (max-width: 640px) {
+          .reliability-grid {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+          }
+          .shifts-badge-row {
+            width: 100%;
+            justify-content: space-around;
+            gap: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+          }
+        }
+      `}</style>
     </section>
   );
 };
